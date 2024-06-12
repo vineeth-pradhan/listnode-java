@@ -1,4 +1,4 @@
-package com.listnode;
+package com.list;
 
 class ListNode {
     int val;
