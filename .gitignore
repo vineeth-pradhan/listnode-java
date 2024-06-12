@@ -1,0 +1,21 @@
+*.DS_Store
+*.sw*
+*.metadata/
+*.recommenders/
+.idea/
+**/*/.idea/
+out/
+**/*/out/
+**/*/*.iml
+**/.class
+**/.classpath
+**/.project
+**/.settings
+**/bin
+target/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
