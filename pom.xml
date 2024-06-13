@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.list</groupId>
-  <artifactId>list</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <artifactId>listnode</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
 
   <name>listnode</name>
   <!-- FIXME change it to the project's website -->
