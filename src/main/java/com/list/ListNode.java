@@ -13,16 +13,20 @@ public class ListNode {
         ListNode newHead = copy;
         while(node != null){
             copy.val = node.val;
-            node = node.next;
+            node = node.getNext();
             if(node != null){ copy.next = new ListNode(); copy = copy.next; }
         }
         return newHead;
     }
 
+    public int getVal(){ return val; }
+
+    public ListNode getNext(){ return next; }
+
     public void constructLinkedList(int[] input, ListNode node, int i){
         if(i+1 < input.length){
             ListNode next = new ListNode(input[i+1]);
-            node.next = next;
+            node.getNext() = next;
             constructLinkedList(input, next, i+1);
         }
     }
@@ -30,26 +34,26 @@ public class ListNode {
     public ListNode reverseList(ListNode head){
         ListNode node = head;
         ListNode reverse = head;
-        if(node.next == null){}
-        else if(node != null){ reverse = reverseHelper(node, node.next, node); }
+        if(node.getNext() == null){}
+        else if(node != null){ reverse = reverseHelper(node, node.getNext(), node); }
         return reverse;
     }
 
     public void printLinkedList(ListNode head){
         if (head != null) {
             System.out.print(head.val);
-            if(head.next != null)
+            if(head.getNext() != null)
                 System.out.print(" -> ");
-            printLinkedList(head.next);
+            printLinkedList(head.getNext());
         }
         else{ System.out.println(); }
     }
 
     private ListNode reverseHelper(ListNode current, ListNode next, ListNode newHead){
         if(next != null){
-            ListNode temp = next.next;
-            next.next = current;
-            if(current == newHead) { current.next = null; }
+            ListNode temp = next.getNext();
+            next.getNext() = current;
+            if(current == newHead) { current.getNext() = null; }
             newHead = reverseHelper(next, temp, newHead);
         }
         else{ newHead = current; }
@@ -57,3 +61,4 @@ public class ListNode {
     }
 }
 
+:
