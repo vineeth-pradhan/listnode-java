@@ -19,6 +19,8 @@ public class ListNode {
         return newHead;
     }
 
+    public void setNext(ListNode next){ this.next = next; }
+
     public int getVal(){ return val; }
 
     public ListNode getNext(){ return next; }
@@ -26,7 +28,7 @@ public class ListNode {
     public void constructLinkedList(int[] input, ListNode node, int i){
         if(i+1 < input.length){
             ListNode next = new ListNode(input[i+1]);
-            node.getNext() = next;
+            node.setNext(next);
             constructLinkedList(input, next, i+1);
         }
     }
@@ -52,13 +54,11 @@ public class ListNode {
     private ListNode reverseHelper(ListNode current, ListNode next, ListNode newHead){
         if(next != null){
             ListNode temp = next.getNext();
-            next.getNext() = current;
-            if(current == newHead) { current.getNext() = null; }
+            next.setNext(current);
+            if(current == newHead) { current.setNext(null); }
             newHead = reverseHelper(next, temp, newHead);
         }
         else{ newHead = current; }
         return newHead;
     }
 }
-
-:
