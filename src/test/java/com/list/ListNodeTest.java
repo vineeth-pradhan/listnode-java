@@ -52,13 +52,13 @@ public class ListNodeTest {
 
     @Nested
     class WhenConstructLinkedListIsCalled{
+        ListNode head;
+
         @Test
         public void headShouldBeNullWhenInputArrayIsEmpty(){ rawData = new int[] {}; }
 
         @Nested
-        class AndWhenFourItemsOfRawDataIsPassed{
-            ListNode head;
-
+        class AndWhenFourItemsOfRawDataIsPassed {
             @BeforeEach
             public void setUp(){
                 rawData = new int[] { 1, 2, 3, 4 };
@@ -80,6 +80,36 @@ public class ListNodeTest {
 
             @Test
             public void fifthItemShouldNotBeReachable(){ assertEquals(null, head.next.next.next.next); }
+
+            @Nested
+            class AndWhenPrintLinkedListIsCalled {
+                @Test
+                public void itShouldPrintAllFourItems(){
+                    assertEquals("1 -> 2 -> 3 -> 4", ListNode.printLinkedList(head));
+                }
+            }
+        }
+
+        @Nested
+        class AndRawDataContainingOneItemIsPassed {
+            @BeforeEach
+            public void setUp(){
+                rawData = new int[] { 4 };
+                head = new ListNode(rawData[0]);
+                head.constructLinkedList(rawData, head, 0);
+            }
+
+            @Test
+            public void headShouldBeFour() { assertEquals(4, head.getVal()); }
+
+            @Test
+            public void headShouldPointToNull() { assertEquals(null, head.getNext()); }
+
+            @Nested
+            class AndWhenPrintLinkedListIsCalled {
+                @Test
+                public void itShouldPrintOnlyOneItem() { assertEquals("4", ListNode.printLinkedList(head)); }
+            }
         }
     }
 }

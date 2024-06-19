@@ -23,6 +23,8 @@ public class ListNode {
 
     public int getVal(){ return val; }
 
+    public void setVal(int val){ this.val = val; }
+
     public ListNode getNext(){ return next; }
 
     public void constructLinkedList(int[] input, ListNode node, int i){
@@ -41,14 +43,18 @@ public class ListNode {
         return reverse;
     }
 
-    public void printLinkedList(ListNode head){
-        if (head != null) {
-            System.out.print(head.val);
-            if(head.getNext() != null)
-                System.out.print(" -> ");
-            printLinkedList(head.getNext());
+    public static String printLinkedList(ListNode head){
+        return printHelper(head, "");
+    }
+
+    private static String printHelper(ListNode node, String output){
+        if (node != null) {
+            output += (node.val);
+            if(node.getNext() != null)
+                output += (" -> ");
+            return printHelper(node.getNext(), output);
         }
-        else{ System.out.println(); }
+        else{ return output; }
     }
 
     private ListNode reverseHelper(ListNode current, ListNode next, ListNode newHead){
