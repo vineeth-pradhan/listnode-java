@@ -46,7 +46,7 @@ public class ListNodeTest {
         public void nextNodeShouldBeLinkedWhenANodeIsPassedInSecondParameter(){
             var nextNode = new ListNode();
             var node = new ListNode(1,nextNode);
-            assertEquals(nextNode, node.getNext());
+            assertEquals(nextNode, node.next);
         }
     }
 
@@ -100,10 +100,10 @@ public class ListNodeTest {
             }
 
             @Test
-            public void headShouldBeFour() { assertEquals(4, head.getVal()); }
+            public void headShouldBeFour() { assertEquals(4, head.val); }
 
             @Test
-            public void headShouldPointToNull() { assertEquals(null, head.getNext()); }
+            public void headShouldPointToNull() { assertEquals(null, head.next); }
 
             @Nested
             class AndWhenPrintLinkedListIsCalled {

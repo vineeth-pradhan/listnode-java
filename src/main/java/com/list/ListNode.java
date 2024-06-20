@@ -1,8 +1,8 @@
 package com.list;
 
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
     public ListNode() {}
     public ListNode(int val) { this.val = val; }
     public ListNode(int val, ListNode next) { this.val = val; this.next = next; }
@@ -13,24 +13,16 @@ public class ListNode {
         ListNode newHead = copy;
         while(node != null){
             copy.val = node.val;
-            node = node.getNext();
+            node = node.next;
             if(node != null){ copy.next = new ListNode(); copy = copy.next; }
         }
         return newHead;
     }
 
-    public void setNext(ListNode next){ this.next = next; }
-
-    public int getVal(){ return val; }
-
-    public void setVal(int val){ this.val = val; }
-
-    public ListNode getNext(){ return next; }
-
     public void constructLinkedList(int[] input, ListNode node, int i){
         if(i+1 < input.length){
             ListNode next = new ListNode(input[i+1]);
-            node.setNext(next);
+            node.next = next;
             constructLinkedList(input, next, i+1);
         }
     }
@@ -38,8 +30,8 @@ public class ListNode {
     public ListNode reverseList(ListNode head){
         ListNode node = head;
         ListNode reverse = head;
-        if(node.getNext() == null){}
-        else if(node != null){ reverse = reverseHelper(node, node.getNext(), node); }
+        if(node.next == null){}
+        else if(node != null){ reverse = reverseHelper(node, node.next, node); }
         return reverse;
     }
 
@@ -50,18 +42,18 @@ public class ListNode {
     private static String printHelper(ListNode node, String output){
         if (node != null) {
             output += (node.val);
-            if(node.getNext() != null)
+            if(node.next != null)
                 output += (" -> ");
-            return printHelper(node.getNext(), output);
+            return printHelper(node.next, output);
         }
         else{ return output; }
     }
 
     private ListNode reverseHelper(ListNode current, ListNode next, ListNode newHead){
         if(next != null){
-            ListNode temp = next.getNext();
-            next.setNext(current);
-            if(current == newHead) { current.setNext(null); }
+            ListNode temp = next.next;
+            next.next = current;
+            if(current == newHead) { current.next = null; }
             newHead = reverseHelper(next, temp, newHead);
         }
         else{ newHead = current; }
